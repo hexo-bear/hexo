@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Apache</title>
+      <link href="/post/Apache.html"/>
+      <url>/post/Apache.html</url>
+      
+        <content type="html"><![CDATA[<hr><h3 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h3><p>1.安装Apache服务程序。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install httpd                <span class="comment"># Apache的服务包为httpd</span></span><br></pre></td></tr></table></figure><p>2.启用httpd服务程序并将其加入到开机启动项中，随系统开机而运行。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start httpd            <span class="comment"># 启动httpd服务</span></span><br><span class="line">systemctl <span class="built_in">enable</span> httpd           <span class="comment"># 设置httpd为开机启动项</span></span><br><span class="line">systemctl status httpd           <span class="comment"># 查看httpd是否正常运行</span></span><br></pre></td></tr></table></figure><p>3.打开防火墙80号端口</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --add-port 80/tcp --permanent        <span class="comment"># --permanent 永久生效</span></span><br><span class="line">firewall-cmd --reload                             <span class="comment"># 重新载入配置</span></span><br></pre></td></tr></table></figure><p>4.测试<a href="http://127.0.0.1" target="_blank" rel="noopener">http://127.0.0.1</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl http://127.0.0.1          <span class="comment"># 命令行访问</span></span><br><span class="line">http://server_ip               <span class="comment"># 浏览器访问</span></span><br></pre></td></tr></table></figure><p>5.配置服务文件参数</p><table><thead><tr><th>服务目录</th><th align="center">/etc/httpd</th></tr></thead><tbody><tr><td>主配置文件</td><td align="center">/etc/httpd/conf/httpd.conf</td></tr><tr><td>网站数据目录</td><td align="center">/var/www/html</td></tr><tr><td>访问日志</td><td align="center">/var/log/httpd/access_log</td></tr><tr><td>错误日志</td><td align="center">/var/log/httpd/error_log</td></tr></tbody></table><p>6.进入目录/etc/httpd/conf/，查看配置文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]<span class="comment"># egrep -v '#|^$' httpd.conf     # 删除以#开头及空行</span></span><br></pre></td></tr></table></figure><p>7.向/var/www/html目录中写入一个文件，替换掉httpd服务程序的默认首页面</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"Welcome To LinuxProbe.Com"</span> &gt; /var/www/html/index.html</span><br><span class="line">[root@localhost conf]<span class="comment"># curl http://127.0.0.1</span></span><br><span class="line">Welcome To LinuxProbe.Com</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>markdown</title>
       <link href="/post/markdown.html"/>
       <url>/post/markdown.html</url>
