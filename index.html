@@ -337,7 +337,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T11:32:36+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T11:32:00+08:00">
                 2020-04-17
               </time>
             
@@ -347,6 +347,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index">
+                    <span itemprop="name">服务搭建</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -377,8 +410,8 @@
       
         
           
-            <h1 id="在此处输入标题"><a href="#在此处输入标题" class="headerlink" title="在此处输入标题"></a>在此处输入标题</h1><p>标签（空格分隔）： ftp  tftp vsftpd</p>
-<h2 id="vsftpd服务"><a href="#vsftpd服务" class="headerlink" title="vsftpd服务"></a>vsftpd服务</h2><p>实验环境：<br>服务器机：centos（192.168.200.20）<br>客户端：centos（192.168.200.30）</p>
+            <hr>
+<h2 id="vsftpd服务"><a href="#vsftpd服务" class="headerlink" title="vsftpd服务"></a>vsftpd服务</h2><p>实验环境：centos 7.7<br>服务器机：centos（192.168.200.20）<br>客户端：centos（192.168.200.30）</p>
 <p>1.安装vsftpd服务</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install vsftpd</span><br></pre></td></tr></table></figure>
 
@@ -391,7 +424,7 @@
 <p>4.客户机安装ftp服务</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install ftp</span><br></pre></td></tr></table></figure>
 
-<h1 id="匿名访问模式"><a href="#匿名访问模式" class="headerlink" title="匿名访问模式"></a>匿名访问模式</h1><p>1.vsftpd服务程序默认开启了匿名开放模式，我们需要做的就是开放匿名用户的上传、下载文件的权限，以及让匿名用户创建、删除、更名文件的权限（带注释命令行都需手动添加）</p>
+<h2 id="匿名访问模式"><a href="#匿名访问模式" class="headerlink" title="匿名访问模式"></a>匿名访问模式</h2><p>1.vsftpd服务程序默认开启了匿名开放模式，我们需要做的就是开放匿名用户的上传、下载文件的权限，以及让匿名用户创建、删除、更名文件的权限（带注释命令行都需手动添加）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/vsftpd/vsftpd.conf</span><br><span class="line">anonymous_enable=YES                  <span class="comment"># 允许匿名用户登</span></span><br><span class="line">anon_umask=022                        <span class="comment"># 设置匿名用户权限</span></span><br><span class="line">anon_upload_enable=YES                <span class="comment"># 允许匿名用户上传</span></span><br><span class="line">anon_mkdir_write_enable=YES           <span class="comment"># 允许匿名用户创建文件</span></span><br><span class="line">anon_other_write_enable=YES           <span class="comment"># 允许匿名用户对文件删除和重命名</span></span><br><span class="line">local_enable=YES</span><br><span class="line">write_enable=YES</span><br><span class="line">local_umask=022</span><br><span class="line">dirmessage_enable=YES</span><br><span class="line">xferlog_enable=YES</span><br><span class="line">connect_from_port_20=YES</span><br><span class="line">xferlog_std_format=YES</span><br><span class="line">listen=NO</span><br><span class="line">listen_ipv6=YES</span><br><span class="line">pam_service_name=vsftpd</span><br><span class="line">userlist_enable=YES</span><br><span class="line">tcp_wrappers=YES</span><br></pre></td></tr></table></figure>
 
 <p>2.重启vsftpd服务程序。</p>
@@ -403,7 +436,7 @@
 <p>4.验证</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ftp 192.168.200.20                  <span class="comment"># 客户端验证</span></span><br><span class="line">Connected to 192.168.200.20 (192.168.200.20).</span><br><span class="line">220 (vsFTPd 3.0.2)</span><br><span class="line">Name (192.168.10.10:root): anonymous</span><br><span class="line">331 Please specify the password.</span><br><span class="line">Password:此处敲击回车即可</span><br><span class="line">230 Login successful.</span><br><span class="line">Remote system <span class="built_in">type</span> is UNIX.</span><br><span class="line">Using binary mode to transfer files.</span><br><span class="line">ftp&gt; <span class="built_in">cd</span> pub</span><br><span class="line">250 Directory successfully changed.</span><br><span class="line">ftp&gt; mkdir files</span><br><span class="line">257 <span class="string">"/pub/files"</span> created</span><br><span class="line">ftp&gt; rename files database</span><br><span class="line">350 Ready <span class="keyword">for</span> RNTO.</span><br><span class="line">250 Rename successful.</span><br><span class="line">ftp&gt; rmdir database</span><br><span class="line">250 Remove directory operation successful.</span><br></pre></td></tr></table></figure>
 
-<h1 id="本地用户模式"><a href="#本地用户模式" class="headerlink" title="本地用户模式"></a>本地用户模式</h1><p>1.修改主配置文件（带注释命令行都需更改或添加）</p>
+<h2 id="本地用户模式"><a href="#本地用户模式" class="headerlink" title="本地用户模式"></a>本地用户模式</h2><p>1.修改主配置文件(带注释命令行都需更改或添加)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/vsftpd/vsftpd.conf</span><br><span class="line">anonymous_enable=NO             <span class="comment"># 禁止匿名用户访问</span></span><br><span class="line">local_enable=YES                <span class="comment"># 允许本地用户模式</span></span><br><span class="line">write_enable=YES                <span class="comment"># 设置可写权限</span></span><br><span class="line">local_umask=022                 <span class="comment"># 本地用户模式创建文件的umask值</span></span><br><span class="line">dirmessage_enable=YES</span><br><span class="line">xferlog_enable=YES</span><br><span class="line">connect_from_port_20=YES</span><br><span class="line">xferlog_std_format=YES</span><br><span class="line">listen=NO</span><br><span class="line">listen_ipv6=YES</span><br><span class="line">pam_service_name=vsftpd</span><br><span class="line">userlist_enable=YES</span><br><span class="line">tcp_wrappers=YES</span><br></pre></td></tr></table></figure>
 
 <p>2.重启vsftpd服务程序。</p>
@@ -415,7 +448,7 @@
 <p>4.验证，选择ftpusers和user_list文件中没有的一个普通用户尝试登录FTP服务器</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ftp 192.168.200.20</span><br><span class="line">Connected to 192.168.200.20 (192.168.200.20).</span><br><span class="line">220 (vsFTPd 3.0.2)</span><br><span class="line">Name (192.168.10.10:root): bear</span><br><span class="line">331 Please specify the password.</span><br><span class="line">Password:此处输入该用户的密码</span><br><span class="line">230 Login successful.</span><br><span class="line">Remote system <span class="built_in">type</span> is UNIX.</span><br><span class="line">Using binary mode to transfer files.</span><br><span class="line">ftp&gt; mkdir files</span><br><span class="line">257 <span class="string">"/home/linuxprobe/files"</span> created</span><br><span class="line">ftp&gt; rename files database</span><br><span class="line">350 Ready <span class="keyword">for</span> RNTO.</span><br><span class="line">250 Rename successful.</span><br><span class="line">ftp&gt; rmdir database</span><br><span class="line">250 Remove directory operation successful.</span><br><span class="line">ftp&gt; <span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="虚拟用户模式"><a href="#虚拟用户模式" class="headerlink" title="虚拟用户模式"></a>虚拟用户模式</h1><p>1.创建用于进行FTP认证的用户数据库文件，其中奇数行为账户名，偶数行为密码</p>
+<h2 id="虚拟用户模式"><a href="#虚拟用户模式" class="headerlink" title="虚拟用户模式"></a>虚拟用户模式</h2><p>1.创建用于进行FTP认证的用户数据库文件，其中奇数行为账户名，偶数行为密码</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/vsftpd/</span><br><span class="line">vim vuser.list</span><br><span class="line">zhangsan</span><br><span class="line">redhat</span><br><span class="line">lisi</span><br><span class="line">redhat</span><br></pre></td></tr></table></figure>
 
 <p>2.使用db_load命令用哈希（hash）算法将原始的明文信息文件转换成数据库文件，并且降低数据库文件的权限（避免其他人看到数据库文件的内容），然后再把原始的明文信息文件删除。</p>
@@ -450,6 +483,7 @@
 
 <p>4.验证</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"i love linux"</span> &gt; /var/lib/tftpboot/readme.txt</span><br><span class="line">tftp 192.168.200.20</span><br><span class="line">tftp&gt; get readme.txt</span><br><span class="line">tftp&gt; quit</span><br><span class="line">ls</span><br><span class="line">anaconda-ks.cfg Documents initial-setup-ks.cfg Pictures readme.txt Videos</span><br><span class="line">Desktop Downloads Music Public Templates</span><br><span class="line">cat readme.txt </span><br><span class="line">i love linux</span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -1041,7 +1075,25 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>
