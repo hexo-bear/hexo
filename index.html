@@ -411,7 +411,7 @@
         
           
             <hr>
-<h2 id="vsftpd服务"><a href="#vsftpd服务" class="headerlink" title="vsftpd服务"></a>vsftpd服务</h2><p>实验环境：centos 7.7<br>服务器机：centos（192.168.200.20）<br>客户端：centos（192.168.200.30）</p>
+<h2 id="vsftpd服务aaaaaaaaaaaaaaaaaa"><a href="#vsftpd服务aaaaaaaaaaaaaaaaaa" class="headerlink" title="vsftpd服务aaaaaaaaaaaaaaaaaa"></a>vsftpd服务aaaaaaaaaaaaaaaaaa</h2><p>实验环境：centos 7.7<br>服务器机：centos（192.168.200.20）<br>客户端：centos（192.168.200.30）</p>
 <p>1.安装vsftpd服务</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install vsftpd</span><br></pre></td></tr></table></figure>
 
@@ -483,7 +483,6 @@
 
 <p>4.验证</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"i love linux"</span> &gt; /var/lib/tftpboot/readme.txt</span><br><span class="line">tftp 192.168.200.20</span><br><span class="line">tftp&gt; get readme.txt</span><br><span class="line">tftp&gt; quit</span><br><span class="line">ls</span><br><span class="line">anaconda-ks.cfg Documents initial-setup-ks.cfg Pictures readme.txt Videos</span><br><span class="line">Desktop Downloads Music Public Templates</span><br><span class="line">cat readme.txt </span><br><span class="line">i love linux</span><br></pre></td></tr></table></figure>
-
           
         
       
